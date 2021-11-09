@@ -1,111 +1,40 @@
-# ytdlbot
+## [AnyDLBot](https://telegram.dog/AnyDLBot)
+---
 
-YouTube Download Bot🚀
+**There are multiple things I can do**:
 
-Download videos from YouTube and other platforms through a Telegram Bot
+👉 All Supported Video Formats of https://rg3.github.io/youtube-dl/supportedsites.html
+
+👉 Upload as file from any HTTP link
+
+👉 Convert To Streamable Video, any Telegram media
+
+👉 ReName Telegram files, with custom thumbnail support
+
+👉 Get High Speed Direct Download Link of any Telegram file
+
+### Installation
+
+#### The Easiest Way
+
+**upgrade** your subscription for [@AnyDL_Bot](https://telegram.dog/AnyDl_Bot) without having to run anything on your own
+
+#### The Easy Way
+
+[![](http://ouo.io/images/banners/r1.jpg "ouo.io - Make short links and earn the biggest money")](http://ouo.io/ref/ROXeyb0X)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-# Usage
+#### The Hard Way
 
-
-Send link directly to the bot. Any
-platform [supported by youtube-dl](https://ytdl-org.github.io/youtube-dl/supportedsites.html) will also work.
-
-# Features
-
-![](assets/1.jpeg)
-
-1. fast download and upload.
-2. ads free
-3. support progress bar
-4. audio conversion
-5. playlist support
-6. VIP support
-
-# How to deploy?
-
-Choose your own preference.
-
-## Heroku
-
-Use the button above! It should work like a magic.
-
-## Normal
-
-1. clone code
-2. install ffmpeg
-3. install Python 3.6+
-4. pip3 install -r requirements.txt
-5. set environment variables `TOKEN`, `APP_ID` and `APP_HASH`, and more if you like.
-6. `python3 ytdl.py`
-
-## Simple one line docker
-
-Some functions, such as VIP, ping will be disabled.
-
-```shell
-docker run -e APP_ID=111 -e APP_HASH=111 -e TOKEN=370FXI bennythink/ytdlbot
+```sh
+virtualenv -p python3 VENV
+. ./VENV/bin/activate
+pip install -r requirements.txt
+cp sample_config.py config.py
+--- EDIT config.py values appropriately ---
+python bot.py
 ```
 
-## docker-compose
-
-Compatible with amd64, arm64 and armv7l
-
-### 1. get docker-compose.yml
-
-Download this file to a directory, for example `~/ytdl/docker-compose.yml`
-
-### 2. create VIP database
-
-```shell
-mkdir ~/ytdl/data/
-touch ~/ytdl/data/vip.sqlite
-```
-
-### 3. create env file
-
-```shell
-mkdir ~/ytdl/env/
-vim ~/ytdl/env/ytdl.env
-```
-
-you can configure all the following environment variables:
-
-* APP_ID: **REQUIRED**
-* APP_HASH: **REQUIRED**
-* TOKEN: **REQUIRED**
-* REDIS: **REQUIRED**
-* OWNER: owner username
-* QUOTA: quota in bytes
-* EX: quota expire time
-* MULTIPLY: vip quota comparing to normal quota
-* USD2CNY: exchange rate
-* VIP: enable VIP or not, default: disable
-* AFD_LINK
-* COFFEE_LINK
-* COFFEE_TOKEN
-* AFD_TOKEN
-* AFD_USER_ID
-* WORKERS: default 100
-
-### 4. run
-
-```
-docker-compose up -d
-```
-
-# Command
-
-```
-start - Let's start
-about - Want to contribute?
-ping - Bot running status
-help - Anything troubles you?
-ytdl - Download video in group
-vip - Join VIP
-terms - View Terms of Service
-```
-# License
-
-Apache License 2.0
+#### LICENSE
+- GPLv3

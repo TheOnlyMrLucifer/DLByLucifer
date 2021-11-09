@@ -1,1 +1,1 @@
-worker: python ytdl.py
+worker: python3 bot.py
