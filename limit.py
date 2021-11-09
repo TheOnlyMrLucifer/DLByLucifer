@@ -296,7 +296,7 @@ def verify_payment(user_id, unique) -> "str":
     if "@" in unique:
         pay = BuyMeACoffee()
     else:
-        pay = Afdian()
+        pay = Paypal()
 
     level, amount, pay_id = pay.get_user_payment(unique)
     if amount == 0:

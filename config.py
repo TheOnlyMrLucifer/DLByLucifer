@@ -17,7 +17,7 @@ EX = os.getenv("EX", 24 * 3600)
 MULTIPLY = os.getenv("MULTIPLY", 5)  # VIP1 is 5*5-25G, VIP2 is 50G
 USD2CNY = os.getenv("USD2CNY", 6)  # $10
 
-ENABLE_VIP = os.getenv("VIP", False)
+ENABLE_VIP = os.getenv("VIP", True)
 AFD_LINK = os.getenv("AFD_LINK", "https://www.paypal.com/paypalme/MrHellShop?locale.x=nl_NL")
 COFFEE_LINK = os.getenv("COFFEE_LINK", "https://www.buymeacoffee.com/TheOnlyMrLucifer")
 COFFEE_TOKEN = os.getenv("COFFEE_TOKEN")
@@ -26,8 +26,8 @@ AFD_USER_ID = os.getenv("AFD_USER_ID")
 
 OWNER = os.getenv("OWNER", "TheOnlyMrLucifer")
 
-APP_ID: "int" = int(os.getenv("APP_ID", 111))
-APP_HASH = os.getenv("APP_HASH", "111")
+APP_ID: "int" = int(os.getenv("APP_ID", 3072251))
+APP_HASH = os.getenv("APP_HASH", "23cbf2ffb2404519b1172a7b5394ca13")
 TOKEN = os.getenv("TOKEN", "3703WLI")
 REDIS = os.getenv("REDIS")
 AUTHORIZED_USER: "str" = os.getenv("AUTHORIZED", "")
