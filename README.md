@@ -1,65 +1,77 @@
-## [LuciV3Bot](https://t.me/LuciV3Bot)
----
+# VideoDownloaderBot
+Download videos from various websites using this telegram bot
 
-**There are multiple things I can do**:
-
-👉 All Supported Video Formats of https://rg3.github.io/youtube-dl/supportedsites.html
-
-👉 Upload as file from any HTTP link
-
-👉 Convert To Streamable Video, any Telegram media
-
-👉 ReName Telegram files, with custom thumbnail support
-
-👉 Get Low Speed Direct Download Link of any Telegram file
-
-👉 Trim / Cult small images / videos from large media files
-
-### Installation
-
-#### The Easiest Way
-
-**upgrade** your subscription for [@LuciV3Bot](https://t.me/LuciV3Bot) without having to run anything on your own
-
-#### The Easy Way
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
-#### The Hard Way
-
+### Docker (Easiest)
+- Make sure docker is installed and running
 ```sh
-virtualenv -p python3 VENV
-. ./VENV/bin/activate
-pip install -r requirements.txt
-cp sample_config.py config.py
---- EDIT config.py values appropriately ---
-python bot.py
+    # Create ~/vdb.env file with appropriate values.
+    docker run -d --restart=always --env-file ~/vdb.env deshdeepak1/video_downloader_bot:latest
+```
+- Try on https://labs.play-with-docker.com/
+
+#### Manually
+- Make sure docker is installed and running
+```sh
+    git clone https://github.com/TheOnlyMrLucifer/DLByLucifer
+    cd VideoDownloaderBot
+    docker build -t vdb .
+    cp sample.env .env
+    # Change values in .env
+    docker run -d --restart=always --env-file .env vdb
 ```
 
-### @BotFather commands
+### Colab
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/DaruaraFriends/VideoDownloaderBot/blob/main/VideoDownloaderBot.ipynb)
 
+### Heroku
+
+#### Easy Way
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/DaruaraFriends/VideoDownloaderBot)
+
+#### Docker
+- Make sure heroku-cli is installed  `npm i -g heroku`
+```sh
+    heroku login
+    git clone https://github.com/TheOnlyMrLucifer/DLByLucifer
+    cd VideoDownloaderBot
+    heroku create
+    heroku stack:set container
+    git push heroku main
 ```
-start - Check If Bot is Online!
-help - How to use this Bot?
-me - Check your Subscription
-upgrade - Upgrade your Subscription
-deletethumbnail - Delete / Clear saved Custom Thumbnail
-getlink - Get Low Speed Direct Download Link
-converttoaudio - Convert Video Files in Telegram to Telegram Audios
-converttovideo - Convert to Streamable Video
-rename - (Long Press) and Rename Telegram Media
-extractstreams - Extract Streams from Telegram media
-ffmpegrobot - Get Info
-trim - (Long Press) and Enter TimeStamp
-downloadmedia - Download media to storage
-storageinfo - Get Info about currently saved Media in storage
-clearffmpegmedia - Clear stored media from storage
-unzip - Extract Compressed Files, inside Telegram
-generatecustomthumbnail - Generate Custom Thumbnail for your streamable videos
-generatescss - Generate SCreenShotS of Telegram media
+- Help: https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
+
+- Add all environment vars either from cli or heroku settings
+    ```sh
+        heroku config:set ENV1=abc ENV2=123
+    ```
+
+### Python
+- Make sure python3, ffmpeg, aria2 are installed
+```sh
+    git clone https://github.com/TheOnlyMrLucifer/DLByLucifer
+    cd VideoDownloaderBot
+    cp sample.env .env
+    # Change values in .env
+    python3 -m venv venv
+    . ./venv/bin/activate
+    pip install -r ./requirements.txt
+    python3 bot.py
 ```
 
+### .env
+```sh
+    API_ID=12345 # Get from https://my.telegram.org/apps
+    API_HASH=abcdef # Get from https://my.telegram.org/apps
+    BOT_TOKEN=123:abc # Get from https://t.me/BotFather
+    AUTH_USERS=123,456 # User ids of those who can use bot anywhere without limit
+    GROUPS=123,456 # Chat ids where you wan't many to use the bot
+    HTML_GROUPS=123,456 # Chat ids where you wan't many to use the bot to download from htmls
+    THUMB=thumb.jpg # Url of video thumbnail. Leave to use video's thumbnail
+    NAME=Deshdeepak # Name to send with video
+```
 
+### Instructions
+- /download_link - To download from links
+- /download_html - To download from htmls
+- /download_link@bot_username & /download_html@bot_username - To use in groups
 
-#### LICENSE
-- GPLv3

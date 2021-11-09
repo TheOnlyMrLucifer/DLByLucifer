@@ -1,76 +1,51 @@
 {
-  "name": "AnyDLBot",
-  "description": "Telegram's best YouTube Downloader. Create your Fork now.",
-  "keywords": [
-    "telegram",
-    "best",
-    "youtube",
-    "downloader",
-    "3"
-  ],
-  "repository": "https://github.com/TheOnlyMrLucifer/DLByLucifer",
-  "env": {
-    "WEBHOOK": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
-      "value": "ANYTHING"
-    },
-    "TG_BOT_TOKEN": {
-      "description": "Your bot token, as a string.",
-      "value": ""
-    },
-    "HTTP_DOMAIN": {
-      "description": "The Heroku App URL similar to https://<appname>.herokuapp.com/",
-      "value": "https://example.com/"
-    },
-    "PORT": {
-      "description": "Port to use for your webhooks",
-      "value": "5000"
-    },
-    "CHAT_BASE_TOKEN": {
-      "description": "Your chat base token, as a string.",
-      "value": ""
-    },
-    "APP_ID": {
-      "description": "Get this value from https://my.telegram.org",
-      "value": ""
-    },
-    "API_HASH": {
-      "description": "Get this value from https://my.telegram.org",
-      "value": ""
-    },
-    "AUTH_USERS": {
-      "description": "allow only pre-defined users to use this bot",
-      "value": "7351948 20516707 23122162 500346573"
-    },
-    "DEF_THUMB_NAIL_VID_S": {
-      "description": "default thumbnail to be used in the videos. Incase, youtube-dl is unable to find a thumbnail.",
-      "value": "",
-      "required": false
-    },
-    "CHUNK_SIZE": {
-      "description": "chunk size that should be used with requests",
-      "value": "",
-      "required": false
-    },
-    "HTTP_PROXY": {
-      "description": "proxy for accessing youtube-dl in GeoRestricted Areas. Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061",
-      "value": "",
-      "required": false
+    "name":"VideoDownloaderBot",
+    "description":"Download videos from various websites using this telegram bot",
+    "repository":"https://github.com/TheOnlyMrLucifer/DLByLucifer",
+    "buildpacks":[
+        {
+            "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"
+        },
+        {
+            "url": "https://github.com/amivin/aria2-heroku.git"
+        },
+        {
+            "url": "heroku/python"
+        }
+    ],
+    "env": {
+        "API_ID":{
+            "description": "Get your telegram API ID from https://my.telegram.org",
+            "value":""
+        },
+        "API_HASH":{
+            "description":"Get your telegram API HASH from https://my.telegram.org",
+		    "value":""
+        },
+        "BOT_TOKEN":{
+            "description":"Get from BotFather",
+            "value":""
+        },
+        "AUTH_USERS":{
+            "description":"Users who can use",
+            "value":""
+        },
+        "GROUPS":{
+            "description":"Groups where to work",
+            "value":""
+        },
+        "HTML_GROUPS":{
+            "description":"Groups where to work for html",
+            "value":""
+        },
+        "THUMB":{
+            "description":"Thumbnail link. Leave empty for using video thumbnail.",
+            "value":"thumb.jpg",
+            "required":false
+        },
+        "NAME":{
+            "description":"Name to send",
+            "value":"LuciV3Bot"
+        }
     }
-  },
-  "addons": [
-  ],
-  "buildpacks": [{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  }, {
-    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
-  }, {
-    "url": "heroku/python"
-  }],
-  "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
-    }
-  }
 }
