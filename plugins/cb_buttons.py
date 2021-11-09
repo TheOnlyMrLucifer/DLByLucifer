@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K
 
-import json
 # the logging things
 import logging
 logging.basicConfig(level=logging.DEBUG,
@@ -15,33 +14,17 @@ import os
 import shutil
 import subprocess
 import time
-from datetime import datetime
-
-import pyrogram
-import requests
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-# https://stackoverflow.com/a/37631799/4723940
-from PIL import Image
-from pydrive.drive import GoogleDrive
-
-from helper_funcs.chat_base import TRChatBase
-from helper_funcs.display_progress import humanbytes, progress_for_pyrogram
-# the Strings used for this "thing"
-from translation import Translation
-
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
 
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
     from sample_config import Config
 else:
-    from sample_config import Config
+    from config import Config
 
+# the Strings used for this "thing"
+from translation import Translation
 
+import pyrogram
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
 from helper_funcs.chat_base import TRChatBase
@@ -79,7 +62,7 @@ async def button(bot, update):
             )
             return False
         zip_file_contents = os.listdir(extract_dir_path)
-        type_of_extract, index_extractor = cb_data.split(":")
+        type_of_extract, index_extractor, undefined_tcartxe = cb_data.split(":")
         if index_extractor == "NONE":
             try:
                 shutil.rmtree(extract_dir_path)

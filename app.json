@@ -1,5 +1,5 @@
 {
-  "name": "LuciV3Bot",
+  "name": "AnyDLBot",
   "description": "Telegram's best YouTube Downloader. Create your Fork now.",
   "keywords": [
     "telegram",
@@ -62,5 +62,15 @@
   ],
   "buildpacks": [{
     "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  }]
+  }, {
+    "url": "https://github.com/opendoor-labs/heroku-buildpack-p7zip"
+  }, {
+    "url": "heroku/python"
+  }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  }
 }
